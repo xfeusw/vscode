@@ -11,9 +11,7 @@
     system = "x86_64-linux";
     pkgs = import nixpkgs {
       inherit system;
-      config.allowUnfreePredicate = pkg: builtins.elem (pkgs.lib.getName pkg) [
-        "vscode"
-      ];
+      config.allowUnfree = true;
     };
   in {
     # Export as reusable Home Manager module
