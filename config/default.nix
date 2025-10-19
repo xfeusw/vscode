@@ -3,7 +3,7 @@
 in {
   programs.vscode = {
     enable = true;
-    package = pkgs.unstable.vscode;
+    package = pkgs.vscode;
     profiles.default = {
       userSettings = {
         # --- UI ---
