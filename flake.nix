@@ -9,7 +9,12 @@
   outputs = { self, nixpkgs, home-manager, ... }:
   let
     system = "x86_64-linux";
-    pkgs = import nixpkgs { inherit system; };
+    pkgs = import nixpkgs {
+      inherit system;
+      config.allowUnfreePredicate = pkg: builtins.elem (pkgs.lib.getName pkg) [
+        "vscode"
+      ];
+    };
   in {
     # Export as reusable Home Manager module
     homeManagerModules.vscode = import ./config/default.nix { inherit pkgs; };
